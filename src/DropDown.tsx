@@ -66,8 +66,11 @@ const DropDown = forwardRef<TouchableWithoutFeedback, DropDownPropsInterface>(
 
     useEffect(() => {
       const _label = list.find((_) => _.value === value)?.label;
-      if (_label) {
+      if (_label && typeof _label === "string") {
         setDisplayValue(_label);
+      } else {
+        // fall back to the value
+        setDisplayValue(value);
       }
     }, [list, value]);
 
