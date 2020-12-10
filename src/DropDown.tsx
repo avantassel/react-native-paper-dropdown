@@ -35,7 +35,7 @@ export interface DropDownPropsInterface {
 type TextInputPropsWithoutTheme = Without<TextInputProps, "theme">;
 
 const DropDown = forwardRef<TouchableWithoutFeedback, DropDownPropsInterface>(
-  (props, ref) => {
+  (props:any, ref:any) => {
     const activeTheme = useTheme();
     const {
       visible,
@@ -65,7 +65,7 @@ const DropDown = forwardRef<TouchableWithoutFeedback, DropDownPropsInterface>(
     };
 
     useEffect(() => {
-      const _label = list.find((_) => _.value === value)?.label;
+      const _label = list.find((_:any) => _.value === value)?.label;
       if (_label && typeof _label === "string") {
         setDisplayValue(_label);
       } else {
@@ -101,7 +101,7 @@ const DropDown = forwardRef<TouchableWithoutFeedback, DropDownPropsInterface>(
         }}
       >
         <ScrollView style={{ maxHeight: dropDownContainerMaxHeight || 200 }}>
-          {list.map((_item, _index) => (
+          {list.map((_item:any, _index:number) => (
             <Menu.Item
               key={_index}
               theme={theme}

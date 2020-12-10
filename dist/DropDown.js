@@ -16,8 +16,12 @@ const DropDown = forwardRef((props, ref) => {
     };
     useEffect(() => {
         const _label = list.find((_) => _.value === value)?.label;
-        if (_label) {
+        if (_label && typeof _label === "string") {
             setDisplayValue(_label);
+        }
+        else {
+            // fall back to the value
+            setDisplayValue(value);
         }
     }, [list, value]);
     return (<Menu visible={visible} onDismiss={onDismiss} theme={theme} anchor={<TouchableRipple ref={ref} onPress={showDropDown} onLayout={onLayout}>
