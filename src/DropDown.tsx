@@ -70,7 +70,7 @@ const DropDown = forwardRef<TouchableWithoutFeedback, DropDownPropsInterface>(
         setDisplayValue(_label);
       } else {
         // fall back to the value
-        setDisplayValue(value);
+        setDisplayValue(value.toString());
       }
     }, [list, value]);
 

@@ -21,7 +21,7 @@ const DropDown = forwardRef((props, ref) => {
         }
         else {
             // fall back to the value
-            setDisplayValue(value);
+            setDisplayValue(value.toString());
         }
     }, [list, value]);
     return (<Menu visible={visible} onDismiss={onDismiss} theme={theme} anchor={<TouchableRipple ref={ref} onPress={showDropDown} onLayout={onLayout}>
