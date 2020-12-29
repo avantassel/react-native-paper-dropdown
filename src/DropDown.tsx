@@ -69,7 +69,11 @@ const DropDown = forwardRef<TouchableWithoutFeedback, DropDownPropsInterface>(
       const _label = list.find((_:any) => _.value === value)?.label;
       if (_label && typeof _label === "string") {
         setDisplayValue(_label);
-      } else {
+      }
+      else if (_label && typeof _label === "object") {
+        setDisplayValue(_label.props.children[_label.props.children.length-1]);
+      }
+      else {
         // fall back to the value
         setDisplayValue(value.toString());
       }

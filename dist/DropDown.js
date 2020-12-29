@@ -19,6 +19,9 @@ const DropDown = forwardRef((props, ref) => {
         if (_label && typeof _label === "string") {
             setDisplayValue(_label);
         }
+        else if (_label && typeof _label === "object") {
+            setDisplayValue(_label.props.children[_label.props.children.length - 1]);
+        }
         else {
             // fall back to the value
             setDisplayValue(value.toString());
