@@ -4,7 +4,7 @@ import {
   TouchableWithoutFeedback,
   View,
 } from "react-native";
-import { Menu, TextInput, TouchableRipple, useTheme } from "react-native-paper";
+import { Menu, Divider, TextInput, TouchableRipple, useTheme } from "react-native-paper";
 import React, { ReactNode, forwardRef, useEffect, useState } from "react";
 
 import { TextInputProps } from "react-native-paper/lib/typescript/src/components/TextInput/TextInput";
@@ -26,6 +26,7 @@ export interface DropDownPropsInterface {
     label: string;
     value: string | number;
     custom?: ReactNode;
+    divider?: boolean;
   }>;
   dropDownContainerMaxHeight?: number;
   activeColor?: string;
@@ -101,7 +102,8 @@ const DropDown = forwardRef<TouchableWithoutFeedback, DropDownPropsInterface>(
         }}
       >
         <ScrollView style={{ maxHeight: dropDownContainerMaxHeight || 200 }}>
-          {list.map((_item:any, _index:number) => (
+          {list.map((_item: any, _index: number) => (
+            <View>
             <Menu.Item
               key={_index}
               theme={theme}
@@ -119,7 +121,9 @@ const DropDown = forwardRef<TouchableWithoutFeedback, DropDownPropsInterface>(
               }}
               title={_item.custom || _item.label}
               style={{ width: inputLayout?.width }}
-            />
+              />
+              {_item.divider && <Divider/>}
+            </View>
           ))}
         </ScrollView>
       </Menu>

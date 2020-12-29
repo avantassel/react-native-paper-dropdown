@@ -1,5 +1,5 @@
 import { ScrollView, View, } from "react-native";
-import { Menu, TextInput, TouchableRipple, useTheme } from "react-native-paper";
+import { Menu, Divider, TextInput, TouchableRipple, useTheme } from "react-native-paper";
 import React, { forwardRef, useEffect, useState } from "react";
 const DropDown = forwardRef((props, ref) => {
     const activeTheme = useTheme();
@@ -34,7 +34,8 @@ const DropDown = forwardRef((props, ref) => {
         marginTop: inputLayout?.height,
     }}>
         <ScrollView style={{ maxHeight: dropDownContainerMaxHeight || 200 }}>
-          {list.map((_item, _index) => (<Menu.Item key={_index} theme={theme} titleStyle={{
+          {list.map((_item, _index) => (<View>
+            <Menu.Item key={_index} theme={theme} titleStyle={{
         color: value === _item.value
             ? activeColor || (theme || activeTheme).colors.primary
             : ((theme || activeTheme) ? (theme || activeTheme).colors.text : undefined),
@@ -43,7 +44,9 @@ const DropDown = forwardRef((props, ref) => {
         if (onDismiss) {
             onDismiss();
         }
-    }} title={_item.custom || _item.label} style={{ width: inputLayout?.width }}/>))}
+    }} title={_item.custom || _item.label} style={{ width: inputLayout?.width }}/>
+              {_item.divider && <Divider />}
+            </View>))}
         </ScrollView>
       </Menu>);
 });

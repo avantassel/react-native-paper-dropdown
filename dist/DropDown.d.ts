@@ -17,6 +17,7 @@ export interface DropDownPropsInterface {
         label: string;
         value: string | number;
         custom?: ReactNode;
+        divider?: boolean;
     }>;
     dropDownContainerMaxHeight?: number;
     activeColor?: string;
