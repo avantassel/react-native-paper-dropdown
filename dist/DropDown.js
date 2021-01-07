@@ -37,7 +37,7 @@ const DropDown = forwardRef((props, ref) => {
         marginTop: inputLayout?.height,
     }}>
         <ScrollView style={{ maxHeight: dropDownContainerMaxHeight || 200 }}>
-          {list.map((_item, _index) => (<View>
+          {list.map((_item, _index) => (<View key={"v" + _index}>
             <Menu.Item key={_index} theme={theme} titleStyle={{
         color: value === _item.value
             ? activeColor || (theme || activeTheme).colors.primary

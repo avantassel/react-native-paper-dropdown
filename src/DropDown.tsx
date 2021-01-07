@@ -107,7 +107,7 @@ const DropDown = forwardRef<TouchableWithoutFeedback, DropDownPropsInterface>(
       >
         <ScrollView style={{ maxHeight: dropDownContainerMaxHeight || 200 }}>
           {list.map((_item: any, _index: number) => (
-            <View>
+            <View key={"v"+_index}>
             <Menu.Item
               key={_index}
               theme={theme}
