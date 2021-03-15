@@ -42,6 +42,7 @@ const DropDown = forwardRef((props, ref) => {
         color: value === _item.value
             ? activeColor || (theme || activeTheme).colors.primary
             : ((theme || activeTheme) ? (theme || activeTheme).colors.text : undefined),
+        width: inputLayout?.width || 400
     }} onPress={() => {
         setValue(_item.value);
         if (onDismiss) {
